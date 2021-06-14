@@ -7,20 +7,20 @@ def create_user(firstName,lastName,pwd):
     '''
     Creates a new user account
     '''
-    user_new = Users(first,last,pwd)
+    user_new = User(firstName,lastName,pwd)
     return user_new
 
 def register_user(user):
     '''
     Saves the created user's account 
     '''
-    Users.create_user(user)
+    User.create_user(user)
     
-def user_check(first,pwd):
+def user_check(firstName,pwd):
     '''
     Checks whether user exists before creating any new credentials
     '''
-    return Credentials.user_check(first,pwd)
+    return Credentials.user_check(firstName,pwd)
 
 def create_cred(name,username,platform,pwd):
     '''
@@ -49,30 +49,37 @@ def show_cred(username):
     return Credentials.show_credentials(username)
     
 def main():
-    print("Welcome to Komo password Vault app")
+    print()
+    print("PASSWORD LOCKER APP")
     while True:
-        print("**************"*10)
-        print("Please use the following short codes to interact with this application app\n li - Login\n cu - Register\n lo - Logout")
-        user_input = input("Enter input here: ")
-        
-        if user_input == 'cu':
-            print("You have selected to register. Please enter your registration details below")
+        print()
+        print("=*=*=*=*"*10)
+        print()
+        print("Usage \n 1 - Login\n 2 - Register\n 3 - Logout")
+        print()
+        user_input = input("Selection : ")
+        print()
+
+        if user_input == '2':
+            print()
+            print("User registration. Kindly enter your registration details below")
             fname = input("Enter your first name: ")
             lname = input("Enter your last name: ")
             pwd = input("Enter your desired password: ")
             register_user(create_user(fname, lname, pwd))
-            print(f"Your account is registered as follows: First Name: {fname}LastName: {lname} Password: {pwd} is your password")
+            print(f"Your account has been registered as follows:\n First Name: {fname}\n LastName: {lname}\n Password: {pwd} is your password")
             
-        elif user_input == 'li':
+        elif user_input == '1':
             print("Enter your first name and password to log in to your account\n")
             username = input("Enter your username here:     ")
             password = input("Enter your password here:     ")
             if user_check(username, password) == username:
-                print(f"Welcome {username}. Your login was successful")
+                print(f"Welcome {username}. Logged on successful")
                 
                 while True:
-                    print("**********"*10)
-                    print("Please use the following short codes to use the Password Vault")
+                    print("=*=*=*=*"*10)
+                    print()
+                    print("Usage")
                     user_input = input("cc - Save new credentials\n ccp - Create new credentials with Generated Password\n dc - Display credentials\n del - Delete credentials\n ex - Exit")
                     
                     if user_input == 'cc':
@@ -81,7 +88,7 @@ def main():
                         platform = input("Enter the platform:       ")
                         pwd = input("Enter your password:       ")
                         create_cred(fname,username,platform,pwd)
-                        print(f"Your credentials for site: {platform}, with username: {username} and password: {pwd} has been saved!")
+                        print(f"Your credentials for site:\n {platform}, with username: {username} and password: {pwd} has been saved!")
                     
                     elif user_input == 'ccp':
                         print("Enter the account details you want saved below")
@@ -90,10 +97,10 @@ def main():
                         len = input("Enter the length of your desired password (Numbers Only):      ")
                         pwd = password_gen(int(len))
                         create_cred(fname,username,platform,pwd)
-                        print(f"Your credentials for account: {platform}, with username: {username} and password: {pwd} have been saved!")
+                        print(f"Your credentials for account:\n {platform}, with username: {username} and password: {pwd} have been saved!")
                         
                     elif user_input == 'dc':
-                        print("Your saved credentials are as below")
+                        print("Your saved credentials are as shown below")
                         show_cred(username)
                          
                     elif user_input == 'del':
@@ -104,11 +111,11 @@ def main():
                         print("Your credentials have been deleted!")
                         
                     elif user_input == 'ex':
-                        print("Goodbye!!")
+                        print("Exiting!")
                         break
     
-        elif user_input == 'lo':
-            print("Thank you for using Komo Password Vault")
+        elif user_input == '3':
+            print("You have been logged out successfully!")
             break
             
         else:
