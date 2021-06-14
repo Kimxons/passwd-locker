@@ -79,13 +79,13 @@ class TestCredentials(unittest.TestCase):
 		self.assertEqual(self.new_cred.platform, "Twitter")
 		self.assertEqual(self.new_cred.pwd, "john123")
 		
-	# def test_save_cred(self):
-	# 	"""
-	# 	test_save_cred to check if the initialized object is saved to credentials_info
-	# 	"""
-	# 	self.new_cred = Credentials("John","Doe","Twitter","john123")
-	# 	self.new_cred.save_cred()
-	# 	self.assertEqual(len(Credentials.credentials_info),5)
+	def test_save_cred(self):
+		"""
+		test_save_cred to check if the initialized object is saved to credentials_info
+		"""
+		self.new_cred = Credentials("John","Doe","Twitter","john123")
+		self.new_cred.save_cred()
+		self.assertEqual(len(Credentials.credentials_info),3)
 		
 	def tearDowm(self):
 		"""
@@ -99,19 +99,9 @@ class TestCredentials(unittest.TestCase):
 		"""
 		self.new_cred = Credentials("John","Doe","Twitter","john123")
 		self.new_cred.save_cred()
-		self.another_cred = Credentials("John","Doe","Twitter","john123")
+		self.another_cred = Credentials("Jeff","Bezos","Twitter","jeff123")
 		self.another_cred.save_cred()
 		self.assertEqual(len(Credentials.show_credentials(self.new_cred.username)),1)
-	
-	# def test_find_platform(self):
-	# 	"""
-	# 	test_find_platform test to search credentials per account
-	# 	"""
-	# 	self.new_cred = Credentials("John","Doe","Twitter","john123")
-	# 	self.new_cred.save_cred()
-	# 	Twitter = Credentials("John","Doe","Twitter","john123")
-	# 	Twitter.save_cred()
-	# 	self.assertEqual(Credentials.find_platform('Twitter'),Twitter)
 		
 	def test_del_cred(self):
 		"""
@@ -124,24 +114,7 @@ class TestCredentials(unittest.TestCase):
 		Twitter.save_cred()
 		del_item = Credentials.find_platform('Twitter')
 		self.assertEqual(Credentials.del_cred(del_item),"Deleted")
-
-	def main():
-	    """
-	    -------------
-	    main() METHOD
-	    -------------
-	    functions calls the required
-	    methods in order of execution
-	    """
-	    printDocString()
-	    setUp()
-	    test_init()
-	    test_save_user()
-	    tearDowm()
-	    test_show_credentials()
-	    test_find_platform()
-	    test_del_cred()
-
     			
 if __name__ == '__main__':
 	unittest.main()
+	main()
