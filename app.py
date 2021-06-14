@@ -1,13 +1,13 @@
 #!/usr/bin/env python3.8
 # vim: set fileencoding=<utf-8> :
 
-from main import User, Credentials
+from main import *
 
-def create_user(firstName,lastName,pwd):
+def create_user(first,last,pwd):
     '''
     Creates a new user account
     '''
-    user_new = User(firstName,lastName,pwd)
+    user_new = User(first,last,pwd)
     return user_new
 
 def register_user(user):
@@ -16,11 +16,11 @@ def register_user(user):
     '''
     User.create_user(user)
     
-def user_check(firstName,pwd):
+def user_check(first,pwd):
     '''
     Checks whether user exists before creating any new credentials
     '''
-    return Credentials.user_check(firstName,pwd)
+    return Credentials.user_check(first,pwd)
 
 def create_cred(name,username,platform,pwd):
     '''
@@ -47,7 +47,7 @@ def show_cred(username):
     Displays saved credentials
     '''
     return Credentials.show_credentials(username)
-    
+        
 def main():
     print()
     print("PASSWORD LOCKER APP")
@@ -55,12 +55,11 @@ def main():
         print()
         print("=*=*=*=*"*10)
         print()
-        print("Usage \n 1 - Login\n 2 - Register\n 3 - Logout")
+        print("Usage \n 1 - Register(To register a fresh) \n 2 - Login (To login to the password locker app) \n 3 - Logout(To logout from the app)")
         print()
-        user_input = input("Selection : ")
-        print()
+        user_input = input("Your Selection : ")
 
-        if user_input == '2':
+        if user_input == '1':
             print()
             print("User registration. Kindly enter your registration details below")
             fname = input("Enter your first name: ")
@@ -69,7 +68,7 @@ def main():
             register_user(create_user(fname, lname, pwd))
             print(f"Your account has been registered as follows:\n First Name: {fname}\n LastName: {lname}\n Password: {pwd} is your password")
             
-        elif user_input == '1':
+        elif user_input == '2':
             print("Enter your first name and password to log in to your account\n")
             username = input("Enter your username here:     ")
             password = input("Enter your password here:     ")
