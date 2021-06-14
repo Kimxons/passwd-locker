@@ -9,12 +9,12 @@ class User:
     
     user_info = []
     
-    def __init__(self,first,last,password):
+    def __init__(self,firstName,lastName,password):
         """
             Information needed to create a password saving object
         """
-        self.first = first
-        self.last = last
+        self.first = firstName
+        self.last = lastName
         self.password = password
     
     def create_user(self):
@@ -33,14 +33,14 @@ class Credentials(User):
     user_cred_info = []
     
     @classmethod
-    def user_check(cls,first,password):
+    def user_check(cls,firstName,password):
         """
             Checks for matching credentials in user_info
         """
         
         for cred in cls.user_info:
-            if cred.first == first and cred.password == password:
-                identity = cred.first
+            if cred.firstName == firstName and cred.password == password:
+                identity = cred.firstName
         return identity
     
     def __init__(self,name,username,platform,pwd):
