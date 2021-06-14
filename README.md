@@ -52,3 +52,7 @@ Test Driven Approach has been used in this application.
 | Display a list of credentials               | Enter: dc                          | Prints a list of saved credentials                                                                    |
 | Display prompt for which credential to copy | Enter: cp                        | Enter the site name of the credential you wish to copy.                                               |
 | Exit application                            | Enter: ex                          | Exit the current navigation stage                                                                     |
+
+
+##Licence information 
+Link: https://github.com/Kimxons/passwd-locker/blob/main/LICENSE
